@@ -1,0 +1,48 @@
+<!doctype html>
+{% extends "lru/base.html" %}
+
+<head>
+  <meta charset="utf-8" />
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#id_myDate" ).datepicker();
+  });
+  </script>
+	<link rel="stylesheet" href="/users/oyvindhellenes/Desktop/Sommerjobb 2013/mysite/lru/template/lru/reservation_style.css" />
+</head>
+<body>
+{% block sidebar %}
+<ul>
+	<li><a href="/lru/">Cancel</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h3>{{ valgt_utstyr }}</h3>
+<hr>
+<h5>Lokasjon: {{ lokasjon }}</h5>
+<h5>Beskrivelse: {{ beskrivelse }}</h5>
+<hr>
+<br>
+<form action="" method="POST" name="reservasjon" accept-charset="utf-8">{% csrf_token %}
+	<ul>
+		{{form.as_ul}}
+	</ul>
+	<br>
+	<input type="submit" name="submit2" value="Legg til reservasjon" id="id_myDate2">	
+</form>
+<p>{{ test }}</p>
+<br>
+<h4>Siste reservasjoner:</h4>
+{% for reservasjon in siste_res %}
+<p>{{ reservasjon }}</p>
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>

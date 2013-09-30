@@ -1,0 +1,13 @@
+{% extends "lru/base.html" %}
+
+{% block content %}
+
+	<h2> Your login details are invalid!</h2>
+	<p> Click <a href="/lru/login/">here</a> to login again.</p>
+	{% if selection %}
+	<tr>
+	    <td>{{ selection }}</td>
+	</tr>
+	{% endif %}
+	
+{% endblock %}

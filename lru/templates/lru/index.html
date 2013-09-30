@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Hellenes LRU</title>
+	{% csrf_token %}
+</head>
+<body id="index" onload="">
+<div id="wrapper">
+	<div id="header">
+		<h1>Leige og Reservasjon av Utstyr</h1>
+		
+	</div>
+	<div id="main">
+		{% block content %}
+		<form action="" method="POST" name="dropdown" accept-charset="utf-8">{% csrf_token %}
+			<ul>
+				{{form.as_ul}}
+			</ul>
+
+			<input type="submit" name="submit" value="Velg utstyr" id="id_myDate">	
+		</form>
+		<a href="http://localhost:8000/lru/create/">
+		   <button>Legg til nytt utstyr</button>
+		</a>
+		<br>
+		{% endblock %}
+		<h4>Siste reservasjoner:</h4>
+		{% for reservasjon in reservasjonsliste %}
+		<ul>
+		<li><h6>{{ reservasjon }}</h6></li>
+		</ul>
+		{% endfor %}
+				
+	</div>
+	<div id="footer">
+		<h4>Du er logget inn som: {{bruker}} </h4>
+		<p> Klikk <a href="/lru/logout/">her</a> for logge ut.</p>
+		<h5>Property of Øyvind Hellenes </h5>
+	</div>
+</div>
+</body>
+</html>
