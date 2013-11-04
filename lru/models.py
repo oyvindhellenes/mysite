@@ -12,10 +12,12 @@ class Utstyr(models.Model):
 	
 class Reservasjon(models.Model):
 	utstyr = models.ForeignKey(Utstyr)
-	dato = models.DateTimeField('Reservasjons dato')
+	fra_tidspunkt = models.DateTimeField('Fra:')
 	reservert_av = models.CharField(max_length=100)
+	til_tidspunkt = models.DateTimeField('Til:')
+	kommentar = models.CharField(max_length=200)
 	
 	def __unicode__(self):
-		return self.utstyr.utstyrstype +" reservert av "+ self.reservert_av + " den " + self.dato.strftime("%Y-%m-%d %H:%M:%S")
+		return self.utstyr.utstyrstype +" reservert av "+ self.reservert_av + " fra " + self.fra_tidspunkt.strftime("%Y-%m-%d %H:%M:%S") + " til " + self.til_tidspunkt.strftime("%Y-%m-%d %H:%M:%S")
 		
  
